@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // главная
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/about', '\App\Http\Controllers\Pages_Controller@about')->name('about');
+
+Route::get('/contact', '\App\Http\Controllers\Pages_Controller@contact')->name('contact');
+Route::get('/business', '\App\Http\Controllers\Pages_Controller@business')->name('business');
+Route::get('/civilian', '\App\Http\Controllers\Pages_Controller@civilian')->name('civilian');
+// для новостей
+
+Route::prefix("post")->group(function(){
+    Route::get('/', '\App\Http\Controllers\Pages_Controller@post')->name('post');
+    Route::get('/single', '\App\Http\Controllers\Pages_Controller@bsingle')->name('single');
 });
