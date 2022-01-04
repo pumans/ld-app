@@ -22,17 +22,14 @@
                         <li><a href="https://www.facebook.com/%D0%AE%D1%80%D0%B8%D0%B4%D0%B8%D1%87%D0%BD%D0%B8%D0%B9-%D0%B4%D0%B5%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82-101947084957332" class="icofont-facebook"></a></li>
                         <li><a href="https://www.instagram.com/" class="icofont-instagram"></a></li>
                         <li><a href="https://www.youtube.com/" class="icofont-play-alt-1"></a></li>
-                        @if(\Auth::check())
+                        @auth("web")
                             <li><a href="#" class="share">{{\Auth::user()->name}}</a></li>
-                            <li><form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <a :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();"> {{ __('Вихід') }} </a>
-                                </form></li>
-                        @else
-                            <li><a href="#" class="share">Вхід</a></li>
-                            <li><a href="#" class="share">Реєстрація</a></li>
-                        @endif
+                            <li><a href="{{route("logout")}}" class="share">Вихід</a></li>
+                        @endauth
+                        @guest("web")
+                            <li><a href="{{route('login')}}" class="share">Вхід</a></li>
+                            <li><a href="{{route('register')}}" class="share">Реєстрація</a></li>
+                        @endguest
                     </ul>
                 </div>
             </div>
@@ -61,7 +58,7 @@
 
                         <div class="navbar-collapse show collapse clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li class="current"><a href="{{route('index')}}"><h5>Legal Expert Union</h5></a></li>
+                                <li class="current"><a href="{{route('index')}}"><h4>Legal Expert Union</h4></a></li>
                                 <li><a href="{{route('about')}}">Про компанію</a></li>
                                 <li class="dropdown"><a href="#">Послуги</a>
                                     <ul>
@@ -76,9 +73,9 @@
                                         <li><a href="#">Проєкти Details</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="{{route('post')}}">Новини</a>
+                                <li class="dropdown"><a href="{{route('posts')}}">Новини</a>
                                     <ul class="from-right">
-                                        <li><a href="{{route('post')}}">Новини</a></li>
+                                        <li><a href="{{route('posts')}}">Новини</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{route('contact')}}">Контакти</a></li>

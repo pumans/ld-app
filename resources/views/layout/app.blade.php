@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <title>Consultix - Investment Company Bootstrap 5 Template</title>
+    <title>@yield('title')</title>
     <meta name="description" content="Consulte is a free Bootstrap HTML Template for Investment Company"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
@@ -16,27 +16,27 @@
     <!-- Open Graph (OG) meta tags are snippets of code that control how URLs are displayed when shared on social media  -->
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Consulte - Investment Company Bootstrap HTML Template" />
+    <meta property="og:title" content="@yield('title')" />
     <meta property="og:url" content="PAGE_URL" />
-    <meta property="og:site_name" content="SITE_NAME" />
+    <meta property="og:site_name" content="LEU" />
     <!-- For the og:image content, replace the # with a link of an image -->
     <meta property="og:image" content="#" />
-    <meta property="og:description" content="Consulte is a free Bootstrap HTML Template for Investment Company" />
+    <meta property="og:description" content="@yield('title')" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Add site Favicon -->
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
-    <meta name="msapplication-TileImage" content="/images/favicon.png" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <meta name="msapplication-TileImage" content="/images/favicon.ico" />
 
     <!-- Structured Data  -->
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      "name": "Replace_with_your_site_title",
+      "name": "@yield('title')",
       "url": "Replace_with_your_site_URL"
     }
     </script>
@@ -44,9 +44,17 @@
 
 <body>
 <!--Pagewrapper-->
+<div class="page-wrapper">
 
+    @include('partials.header')
+
+    @yield('content');
+
+    @include('partials.footer')
+
+</div>
 <!--End pagewrapper-->
-@yield('content')
+
 <!-- Search Popup -->
 <div class="search-popup">
     <button class="close-search style-two"><span class="icofont-brand-nexus"></span></button>
