@@ -64,9 +64,11 @@
                                 <div class="text">Підпішіться на нас та отримуйте першими новини та пропозиції </div>
                                 <!-- Newsletter Form -->
                                 <div class="newsletter-form">
-                                    <form method="get" action="#">
+                                    <form method="post" action="{{route('email_form_process')}}">
+                                        @csrf
                                         <div class="form-group">
                                             <input type="email" name="email" value="" placeholder="Email ..." required>
+                                            @error('email')<p style="color: red">{{$message}}</p>@enderror
                                             <button type="submit" class="theme-btn icofont-arrow-right"></button>
                                         </div>
                                     </form>

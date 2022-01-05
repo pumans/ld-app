@@ -25,7 +25,7 @@ class ContactFormRequest extends FormRequest
     {
         return [
             "name" => ["required", "string"],
-            "phone" => ["required"],
+            "phone" => ["required", "regex:/^([0-9\s\-\+\(\)]*)$/", "min:10"],
             "text" => ["required", "min:5"],
         ];
     }

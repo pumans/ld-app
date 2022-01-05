@@ -138,40 +138,8 @@
         <div class="auto-container">
             <div class="row clearfix">
 
-                <!-- Form Column -->
-                <div class="form-column col-lg-5 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <div class="form-boxed">
-                            <h5>безкоштовна консультація</h5>
-
-                            <div class="consult-form">
-                                <form method="post" action="donate.html">
-                                @csrf
-                                    <!--Form Group-->
-                                    <div class="form-group">
-                                        <label>Ім'я</label>
-                                        <input type="text" name="name" value="" placeholder="Олександр Січний" required>
-                                    </div>
-                                    <!--Form Group-->
-                                    <div class="form-group">
-                                        <label>телефон</label>
-                                        <input type="text" name="phone" value="" placeholder="Введіть номер телефону" required>
-                                    </div>
-                                    <!--Form Group-->
-                                    <div class="form-group">
-                                        <label>Напишіть повідомлення</label>
-                                        <textarea name="text" placeholder="Напишіть повідомлення тут"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="txt">надіслати</span></button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <!-- Consult Form Column -->
+                @include('pages.partials.consult')
 
                 <!-- Content Column -->
                 <div class="content-column col-lg-7 col-md-12 col-sm-12">

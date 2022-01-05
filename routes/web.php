@@ -19,7 +19,7 @@ Route::get('/about', '\App\Http\Controllers\PagesController@about')->name('about
 Route::get('/business', '\App\Http\Controllers\PagesController@business')->name('business');
 Route::get('/civilian', '\App\Http\Controllers\PagesController@civilian')->name('civilian');
 // страница контакты
-Route::get('/contact', '\App\Http\Controllers\ContactController@contact')->name('contact');
+//Route::get('/contact', '\App\Http\Controllers\ContactController@contact')->name('contact');
 // все новости
 Route::get('/posts', '\App\Http\Controllers\PagesController@posts')->name('posts');
 // одиночная новость
@@ -50,6 +50,8 @@ Route::middleware("guest")->group(function (){
 Route::get('/contact', '\App\Http\Controllers\ContactController@contact')->name('contact');
 // отправка формы обратной связи (email) с страницы контакты
 Route::post('/contact_form_process', [\App\Http\Controllers\ContactController::class, 'email'])->name('contact_form_process');
+// отправка формы обратной связи (email) с футера
+Route::post('/email_form_process', [\App\Http\Controllers\ContactController::class, 'email_subscribed'])->name('email_form_process');
 
 // отправка формы обратной связи (телефон)
-Route::post('/contact_form', [\App\Http\Controllers\IndexController::class, 'contact'])->name('contact_form');
+Route::post('/phone_form', [\App\Http\Controllers\ContactController::class, 'phone'])->name('phone_form');

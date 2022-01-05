@@ -146,51 +146,8 @@
         <div class="auto-container">
             <div class="row clearfix">
 
-                <!-- Form Column -->
-                <div class="form-column col-lg-5 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <div class="form-boxed">
-                            <h5>free consulation</h5>
-
-                            <div class="consult-form">
-                                <form method="post" action="donate.html">
-
-                                    <!--Form Group-->
-                                    <div class="form-group">
-                                        <label>full name</label>
-                                        <input type="text" name="name" value="" placeholder="Jason Staham" required>
-                                    </div>
-                                    <!--Form Group-->
-                                    <div class="form-group">
-                                        <label>phone number</label>
-                                        <input type="text" name="phone" value="" placeholder="Enter your phone number" required>
-                                    </div>
-                                    <!--Form Group-->
-                                    <div class="form-group">
-                                        <label>topics</label>
-                                        <select class="custom-select-box">
-                                            <option>Choose topic</option>
-                                            <option>Topic 01</option>
-                                            <option>Topic 02</option>
-                                            <option>Topic 03</option>
-                                            <option>Topic 04</option>
-                                        </select>
-                                    </div>
-                                    <!--Form Group-->
-                                    <div class="form-group">
-                                        <label>message</label>
-                                        <textarea name="message" placeholder="Write your message here"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="txt">send your messenger</span></button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <!-- Consult Form Column -->
+                @include('pages.partials.consult')
 
                 <!-- Content Column -->
                 <div class="content-column col-lg-7 col-md-12 col-sm-12">
