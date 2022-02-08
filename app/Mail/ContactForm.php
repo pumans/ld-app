@@ -13,7 +13,8 @@ class ContactForm extends Mailable
     protected $formData = [];
     /**
      * Create a new message instance.
-     *
+     * на основании реквеста (данные, написанные пользователем) создаются переменные,
+     * которые потом отправляем методом build()
      * @return void
      */
     public function __construct($formData)
@@ -23,7 +24,7 @@ class ContactForm extends Mailable
 
     /**
      * Build the message.
-     *
+     * рендерится вью уведомление, в которое передаются параметры (поля из формы)
      * @return $this
      */
     public function build()

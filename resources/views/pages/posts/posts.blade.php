@@ -20,10 +20,7 @@
                     <div class="our-blogs">
 
                         <!-- News Block -->
-                        @foreach($posts as $post)
-                            @include('pages.posts.partials.post', ["post" => $post])
-                        @endforeach
-
+                        @each('pages.posts.partials.post', $posts, 'post', 'pages.posts.partials.empty_post')
                     </div>
 
                     <!-- Post Share Options -->

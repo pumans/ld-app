@@ -23,7 +23,7 @@
                         <li><a href="https://www.instagram.com/" class="icofont-instagram"></a></li>
                         <li><a href="https://www.youtube.com/" class="icofont-play-alt-1"></a></li>
                         @auth("web")
-                            <li><a href="#" class="share">{{\Auth::user()->name}}</a></li>
+                            <li><a href="#" class="share">{{auth()->user()->name}}</a></li>
                             <li><a href="{{route("logout")}}" class="share">Вихід</a></li>
                         @endauth
                         @guest("web")
@@ -58,7 +58,7 @@
 
                         <div class="navbar-collapse show collapse clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li class="current"><a href="{{route('index')}}"><h4>Legal Expert Union</h4></a></li>
+                                <li class="current"><a href="{{route('index')}}"><h4>LEU</h4></a></li>
                                 <li><a href="{{route('about')}}">Про компанію</a></li>
                                 <li class="dropdown"><a href="#">Послуги</a>
                                     <ul>
@@ -73,18 +73,22 @@
                                         <li><a href="#">Проєкти Details</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="{{route('posts')}}">Новини</a>
+                                <li class="dropdown"><a href="{{ route('posts') }}">Новини</a>
                                     <ul class="from-right">
-                                        <li><a href="{{route('posts')}}">Новини</a></li>
+                                        <li><a href="{{ route('posts') }}">Новини</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{route('contact')}}">Контакти</a></li>
                                 @if(\Auth::check())
-                                    @if(\Auth::user()->name == "Admin")
-                                        <li><a href="#" class="share">Admin</a></li>
-                                    @else
-                                        <li><a href="#" class="share">CRM</a></li>
-                                    @endif
+                                @if(\Auth::user()->name == "Admin")
+                                <li class="dropdown"><a href="{{ route('admin.login') }}" >Admin</a>
+                                    <ul class="from-right">
+                                        <li><a href="{{ route('admin.login') }}">Trello</a></li>
+                                    </ul></li>
+                                @endif
+                                <li class="dropdown"><a href="#" >CRM</a>
+
+                                </li>
                                 @endif
                             </ul>
                         </div>

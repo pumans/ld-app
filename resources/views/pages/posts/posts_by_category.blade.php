@@ -18,12 +18,8 @@
                 <!-- Content Side -->
                 <div class="content-side col-lg-9 col-md-12 col-sm-12">
                     <div class="our-blogs">
-
-                        <!-- News Block Three -->
-                        @foreach($posts as $post)
-                            @include('pages.posts.partials.post', ["post" => $post])
-                        @endforeach
-
+                        <!-- News Block -->
+                        @each('pages.posts.partials.post', $posts, 'post', 'pages.posts.partials.empty_post')
                     </div>
 
                     <!-- Post Share Options -->

@@ -11,7 +11,7 @@ class PagesController extends Controller
         return view('pages.about');
     }
     public function posts(){
-        $posts = Post::orderBy('created_at', 'DESC')->paginate(4);
+        $posts = Post::orderBy('created_at', 'DESC')->paginate(5);
         return view('pages.posts.posts', ['posts'=>$posts]);
     }
     public function single($id){

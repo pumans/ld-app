@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ForgotUserEmailJob;
 use App\Mail\ForgotPassword;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -41,7 +43,10 @@ class AuthController extends Controller
         ]);
 
         if($user){
+            event(new Registered($user));
+
             auth("web")->login($user);
+            return redirect()->route('verification.notice');
         }
         return redirect(route('index'));
     }
@@ -63,7 +68,7 @@ class AuthController extends Controller
         // сохраняем пароль
         $user->save();
         // отправляем юзеру новый пароль
-        Mail::to($user)->send(new ForgotPassword($password));
+        ForgotUserEmailJob::dispatch( $user, $password );
         return redirect(route('index'));
     }
     public function logout(){

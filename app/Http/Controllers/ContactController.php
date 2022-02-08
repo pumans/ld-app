@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EmailSent;
 use App\Http\Requests\ContactFormRequest;
 use App\Http\Requests\EmailContactFormRequest;
 use App\Http\Requests\EmailFormRequest;
+use App\Jobs\ContactFormJob;
+use App\Jobs\EmailFormlJob;
+use App\Jobs\MailFormJob;
+use App\Jobs\SendUserEmailJob;
 use App\Mail\ContactForm;
 use App\Mail\EmailForm;
 use App\Mail\PhoneForm;
@@ -18,7 +23,11 @@ class ContactController extends Controller
     }
     public function email(EmailContactFormRequest $request): \Illuminate\Routing\Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
     {
-        Mail::to("pumanmad@gmail.com")->send(new ContactForm( $request->validated() ) );
+        $mail = \App\Models\Mail::create([
+            "email" => $request["email"],
+            "text"=> $request["text"],
+        ]);
+        dispatch(new EmailFormlJob($request));
         return redirect(route('contact'));
     }
     public function email_subscribed(EmailFormRequest $request): \Illuminate\Routing\Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
@@ -26,13 +35,13 @@ class ContactController extends Controller
         $mail = \App\Models\Mail::create([
             "email" => $request["email"],
         ]);
+        event(new SendUserEmailJob( $mail->email ) );
 
-        Mail::to($mail)->send(new EmailForm( $request->validated() ) );
         return redirect(route('index'));
     }
     public function phone(ContactFormRequest $request): \Illuminate\Routing\Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
     {
-        Mail::to("pumanmad@gmail.com")->send(new PhoneForm( $request->validated() ) );
+        dispatch(new ContactFormJob($request));
         return redirect(route('index'));
     }
 }
