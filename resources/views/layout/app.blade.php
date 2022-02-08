@@ -31,6 +31,7 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <meta name="msapplication-TileImage" content="/images/favicon.ico" />
 
+    @livewireStyles
     <!-- Structured Data  -->
     <script type="application/ld+json">
     {
@@ -70,7 +71,7 @@
 
 <!-- Scroll To Top -->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-circle-up"></span></div>
-
+<script src="/js/app.js"></script>
 <script src="/js/jquery.js"></script>
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
@@ -85,6 +86,7 @@
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/script.js"></script>
 
-
+@livewireScripts
+<script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 </body>
 </html>
